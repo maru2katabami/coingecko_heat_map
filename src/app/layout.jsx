@@ -4,7 +4,7 @@ import { Source_Sans_3 } from "next/font/google"
 const ss3 = Source_Sans_3({ subsets: ["latin"]})
 
 export const metadata = {
-  title: "Coin Gecko Heat Map",
+  title: "CoinGecko Heat Map",
   description: "",
 }
 

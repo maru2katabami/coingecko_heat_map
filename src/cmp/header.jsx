@@ -6,7 +6,7 @@ export const Header = () => {
   const [ category, setCategory ] = useState("layer-1")
   const [ categories, setCategories ] = useState( null )
 
-  const { setSort, setCoins, detail, setDetail } = Zustand()
+  const { setSort, setCoins, setDetail } = Zustand()
 
   const handleCategories = async () => {
     const res = await fetch("https://api.coingecko.com/api/v3/coins/categories")
@@ -30,7 +30,7 @@ export const Header = () => {
 
   return (
     <div
-      className="absolute top-0 p-5 pb-0 w-full flex items-center overflow-x-scroll">
+      className="absolute top-0 p-5 pb-0 w-full flex justify-center items-center">
       <div
         className="p-1 space-x-2 h-12 rounded-3xl bg-black/30 flex items-center">
         <div
@@ -57,22 +57,6 @@ export const Header = () => {
             <option value="total_volume">Tatal Volume</option>
           </select>
         </div>
-        { detail.id &&
-        <div
-          className="px-1 space-x-3 h-10 rounded-3xl bg-white text-xl font-bold flex items-center">
-          <div
-            className="px-2 h-8 rounded-3xl bg-black text-xs text-white flex items-center">
-            RANK { detail?.market_cap_rank }</div>
-          <div
-            className="size-8 bg-no-repeat bg-center bg-[size:100%]"
-            style={{ backgroundImage: `url(${ detail?.image || "./favicon.ico"})`}}/>
-          <div>{ detail?.symbol.toUpperCase()}</div>
-          <div>${ Number( detail?.current_price )}</div>
-          <div
-            className={`${ detail?.price_change_percentage_24h >= 0 ? "text-green-500": "text-red-500"}`}
-            >{ detail?.price_change_percentage_24h * 100 > 0 ? "+": ""}{ Math.floor( detail?.price_change_percentage_24h * 100 ) / 100 }%</div>
-        </div>
-        }
       </div>
     </div>
   )
