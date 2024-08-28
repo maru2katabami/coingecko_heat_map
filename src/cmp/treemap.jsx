@@ -134,6 +134,7 @@ export const Treemap = () => {
     <div
       className="absolute top-0 size-full">
       <svg
+        className="size-full"
         ref={ svgRef }/>
       <div
         className="absolute top-0 h-1 bg-black/70"
