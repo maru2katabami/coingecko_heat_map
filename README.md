@@ -1,1 +1,1 @@
-# coingecko_heat_map
+# heatmap_by_coingecko

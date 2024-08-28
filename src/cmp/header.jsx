@@ -6,7 +6,7 @@ export const Header = () => {
   const [ category, setCategory ] = useState("layer-1")
   const [ categories, setCategories ] = useState( null )
 
-  const { setSort, setCoins, setDetail } = Zustand()
+  const { setSort, setCoins, detail, setDetail } = Zustand()
 
   const handleCategories = async () => {
     const res = await fetch("https://api.coingecko.com/api/v3/coins/categories")
@@ -32,7 +32,7 @@ export const Header = () => {
     <div
       className="absolute top-0 p-5 pb-0 w-full flex justify-center items-center">
       <div
-        className="p-1 space-x-2 h-12 rounded-3xl bg-black/30 flex items-center">
+        className="p-1 space-x-2 w-96 rounded-3xl bg-black/80 flex flex-wrap justify-between items-center">
         <div
           className="px-2 h-10 rounded-3xl bg-white flex items-center">
           <select
@@ -57,6 +57,45 @@ export const Header = () => {
             <option value="total_volume">Tatal Volume</option>
           </select>
         </div>
+        { detail.name &&
+        <div
+          className=" py-2 space-x-2 space-y-2 w-full">
+          <div
+            className="space-x-2 space-y-2 w-full flex flex-wrap justify-around items-center">
+            <div
+              className="size-10 bg-no-repeat bg-center bg-[size:100%]"
+              style={{ backgroundImage: `url(${ detail.image })`}}/>
+            <div
+              className="text-3xl font-bold text-white">
+              { detail.name }
+            </div>
+            <div
+              className="text-3xl text-white font-bold flex-shrink-0">
+              { detail.symbol.toUpperCase()}
+            </div>
+          </div>
+          <div
+            className="p-1 font-bold text-white">
+            {`RANK : ${ detail.market_cap_rank }`}
+          </div>
+          <div
+            className="p-1 font-bold text-white flex">
+            {`PRICE : $${ Number( detail.current_price ).toLocaleString()}`}
+            <div
+              className={`${ detail.market_cap_change_percentage_24h >= 0 ? "text-green-500": "text-red-500"}`}>
+              { `${ detail.market_cap_change_percentage_24h >= 0 ? "▲": "▼"}${ detail.market_cap_change_percentage_24h }%`}
+            </div>
+          </div>
+          <div
+            className="p-1 font-bold text-white">
+            {`VOLUME : $${ Number( detail.total_volume ).toLocaleString()}`}
+          </div>
+          <div
+            className="text-xs text-white/30">
+            Long press to jump to CoinGecko details page
+          </div>
+        </div>
+        }
       </div>
     </div>
   )

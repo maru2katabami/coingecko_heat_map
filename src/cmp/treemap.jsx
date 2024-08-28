@@ -136,35 +136,8 @@ export const Treemap = () => {
       <svg
         ref={ svgRef }/>
       <div
-        className="absolute top-0 h-1 bg-black/20"
+        className="absolute top-0 h-1 bg-black/70"
         style={{ width: `${ progress }%`, transition: "width 0.3s ease"}}/>
-      { detail.name &&
-      <div
-        className="absolute top-20 left-1/2 -translate-x-1/2 p-2 space-x-2 space-y-2 size-80 rounded-3xl bg-black/20 backdrop-blur-lg">
-        <div
-          className="space-x-2 space-y-2 w-full flex flex-wrap justify-around items-center">
-          <div
-            className="size-14 bg-no-repeat bg-center bg-[size:100%]"
-            style={{ backgroundImage: `url(${ detail.image })`}}/>
-          <div
-            className="text-3xl font-bold">
-            { detail.name }
-          </div>
-          <div
-            className="text-3xl text-white font-bold flex-shrink-0">
-            { detail.symbol.toUpperCase()}
-          </div>
-        </div>
-        <div
-          className="p-1 font-bold">
-          {`RANK : ${ detail.market_cap_rank }`}
-        </div>
-        <div
-          className="p-1 font-bold">
-          {`PRICE : $${ Number( detail.current_price ).toLocaleString()} : ${ detail.market_cap_change_percentage_24h }%`}
-        </div>
-      </div>
-      }
     </div>
   )
 }
