@@ -7,7 +7,7 @@ export const Treemap = () => {
   const svgRef = useRef()
   const [ progress, setProgress ] = useState( 0 )
 
-  const { sort, coins, detail, setDetail } = Zustand()
+  const { sort, coins, detail, setDetail, setCgPage } = Zustand()
 
   const formatNumber = ( num ) => {
     if ( num >= 1000000000 ) return ( num / 1000000000 ).toFixed(2) + " B"
@@ -40,7 +40,7 @@ export const Treemap = () => {
         .enter().append("g")
         .attr("transform", d => `translate(${ d.x0 },${ d.y0 })`)
         .on("pointerdown", ( event, d ) => {
-          const timer = setTimeout(() => window.open(`https://www.coingecko.com/en/coins/${ d.data.id }`), 3000 )
+          const timer = setTimeout(() => open(`https://www.coingecko.com/en/coins/${ d.data.id }`), 3000 )
           const interval = setInterval(() => setProgress( prev => Math.min( prev + 1, 100 )), 25 )
           const clearProgress = () => {
             clearTimeout( timer )
@@ -50,7 +50,6 @@ export const Treemap = () => {
           event.target.addEventListener("pointerup", clearProgress )
           event.target.addEventListener("pointerout", clearProgress )
           setDetail( d.data )
-          console.log( d.data )
         })
         .on("pointermove", ( event, d ) => {
           d3.select( event.target )
