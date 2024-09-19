@@ -121,11 +121,15 @@ export const Treemap = () => {
         .text( d => `Volume[ ${ formatNumber( d.data.total_volume )} ]`)
 
       const zoom = d3.zoom()
-        .scaleExtent([ 1, 10 ])
+        .scaleExtent([ 1, 1000 ])
         .on("zoom", ( event ) => {
           g.attr("transform", event.transform )
-          g.selectAll("rect")
-            .attr("stroke-width", 1 / event.transform.k )
+          g.selectAll("rect").attr("stroke-width", 1 / event.transform.k )
+          if ( event.transform.k === 1 ) {
+            g.transition()
+              .duration(750)
+              .attr("transform", `translate(0,0) scale(1)`)
+          }
         })
 
       svg.call( zoom )
