@@ -38,9 +38,6 @@ export const Header = () => {
   useEffect(() => {
     handleCategories()
     handleCoins( category )
-    try {
-      ( adsbygoogle = window.adsbygoogle || []).push({})
-    } catch ( err ) {}
   }, [])
 
   return (
@@ -70,15 +67,10 @@ export const Header = () => {
         </div>
         { detail.name &&
         <div className="p-2 space-y-2 w-full">
-          <div className="w-full max-h-[100px] bg-white flex justify-center items-center pointer-events-auto">
             {/* ここに広告を注入する */}
-            <ins
-              className="adsbygoogle"
-              style={{ display: "inline-block", width: "346px", height: "100px"}}
-              data-ad-client="ca-pub-7513541440780811"
-              data-ad-slot="7363878258"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins>
+          <div id="frame" className="w-full max-h-[100px] flex justify-center items-center">
+            <iframe data-aa='2353483' src='//ad.a-ads.com/2353483?size=320x100' className="w-[320px] h-[100px]"></iframe>
+            <a id="preview-link" href="https://aads.com/campaigns/new/?source_id=2353483&source_type=ad_unit&partner=2353483"></a>
           </div>
           <div className="space-y-2 w-full flex flex-wrap justify-between items-center">
             <div style={{ width: "40px", height: "40px", background: `url(${ detail.image }) no-repeat center center /100%`}}/>
