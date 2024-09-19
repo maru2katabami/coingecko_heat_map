@@ -39,7 +39,7 @@ export const Header = () => {
     handleCategories()
     handleCoins( category )
     try {
-      ( window.adsbygoogle = window.adsbygoogle || []).push({})
+      ( adsbygoogle = window.adsbygoogle || []).push({})
     } catch ( err ) {}
   }, [])
 
@@ -76,7 +76,9 @@ export const Header = () => {
               className="adsbygoogle"
               style={{ display: "inline-block", width: "346px", height: "100px"}}
               data-ad-client="ca-pub-7513541440780811"
-              data-ad-slot="7363878258"></ins>
+              data-ad-slot="7363878258"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
           </div>
           <div className="space-y-2 w-full flex flex-wrap justify-between items-center">
             <div style={{ width: "40px", height: "40px", background: `url(${ detail.image }) no-repeat center center /100%`}}/>
