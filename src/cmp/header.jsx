@@ -30,9 +30,9 @@ export const Header = () => {
 
   return (
     <div
-      className="absolute top-0 p-5 pb-0 w-full flex justify-center items-center">
+      className="absolute top-0 p-5 pb-0 w-full flex justify-center items-center pointer-events-none">
       <div
-        className="p-1 space-x-2 w-96 rounded-3xl bg-black/80 flex flex-wrap justify-between items-center">
+        className="p-1 space-x-2 w-96 rounded-3xl bg-black/60 flex flex-wrap justify-between items-center">
         <div
           className="px-2 h-10 rounded-3xl bg-white flex items-center">
           <select
@@ -91,8 +91,16 @@ export const Header = () => {
             {`VOLUME : $${ Number( detail.total_volume ).toLocaleString()}`}
           </div>
           <div
+            className="p-1 text-xs text-white">
+            {`LAST_UPDATE_${ new Date( detail.last_updated ).toLocaleString()}`}
+          </div>
+          <div
             className="text-xs text-white/30">
-            Long press to jump to CoinGecko details page
+            Long press to jump to CoinGecko page
+          </div>
+          <div
+            className="w-[calc(100%-40px)] h-[100px] bg-white pointer-events-auto">
+
           </div>
         </div>
         }
