@@ -38,15 +38,15 @@ export const Header = () => {
   useEffect(() => {
     handleCategories()
     handleCoins( category )
-    const script = document.createElement("script")
-    script.async = true
-    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-    script.setAttribute("data-ad-client", "ca-pub-7513541440780811")
-    document.head.appendChild( script )
+    // const script = document.createElement("script")
+    // script.async = true
+    // script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    // script.setAttribute("data-ad-client", "ca-pub-7513541440780811")
+    // document.head.appendChild( script )
 
-    return () => {
-      document.head.removeChild(script);
-    }
+    // return () => {
+    //   document.head.removeChild(script);
+    // }
   }, [])
 
   return (
@@ -78,14 +78,13 @@ export const Header = () => {
         <div className="p-2 space-y-2 w-full">
           <div className="w-full max-h-[100px] bg-white flex justify-center items-center pointer-events-auto">
             {/* ここに広告を注入する */}
-            <ins className="adsbygoogle"
-                   style={{ display: "block"}}
-                   data-ad-client="ca-pub-7513541440780811"
-                   data-ad-slot="7363878258"
-                   data-ad-format="auto"
-                   data-full-width-responsive="true"></ins>
+            <ins
+              class="adsbygoogle"
+              style={{ display: "inline-block" ,width: "346px", height: "100px"}}
+              data-ad-client="ca-pub-7513541440780811"
+              data-ad-slot="7363878258"></ins>
             <script>
-              {`(adsbygoogle = window.adsbygoogle || []).push({})`}
+                (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
           </div>
           <div className="space-y-2 w-full flex flex-wrap justify-between items-center">
