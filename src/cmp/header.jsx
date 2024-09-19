@@ -38,6 +38,9 @@ export const Header = () => {
   useEffect(() => {
     handleCategories()
     handleCoins( category )
+    try {
+      ( window.adsbygoogle = window.adsbygoogle || []).push({})
+    } catch ( err ) {}
   }, [])
 
   return (
@@ -69,14 +72,11 @@ export const Header = () => {
         <div className="p-2 space-y-2 w-full">
           <div className="w-full max-h-[100px] bg-white flex justify-center items-center pointer-events-auto">
             {/* ここに広告を注入する */}
-            <amp-ad
-              layout="fixed"
-              width="346"
-              height="100"
-              type="adsense"
+            <ins
+              class="adsbygoogle"
+              style={{ display: "inline-block", width: "346px", height: "100px"}}
               data-ad-client="ca-pub-7513541440780811"
-              data-ad-slot="7363878258">
-            </amp-ad>
+              data-ad-slot="7363878258"></ins>
           </div>
           <div className="space-y-2 w-full flex flex-wrap justify-between items-center">
             <div style={{ width: "40px", height: "40px", background: `url(${ detail.image }) no-repeat center center /100%`}}/>
