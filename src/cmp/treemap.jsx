@@ -84,6 +84,7 @@ export const Treemap = () => {
           if ( d.data.price_change_percentage_24h <= -5 ) return "#996666"
           if ( d.data.price_change_percentage_24h <= -10 ) return "#663333"
         })
+        .attr("stroke", "#999999")
 
       const textNode = node.append("text")
         .attr("x", d => ( d.x1 - d.x0 ) / 2 )
@@ -123,6 +124,8 @@ export const Treemap = () => {
         .scaleExtent([ 1, 10 ])
         .on("zoom", ( event ) => {
           g.attr("transform", event.transform )
+          g.selectAll("rect")
+            .attr("stroke-width", 1 / event.transform.k )
         })
 
       svg.call( zoom )

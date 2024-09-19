@@ -36,7 +36,7 @@ export const Header = () => {
         <div
           className="px-2 h-10 rounded-3xl bg-white flex items-center">
           <select
-            className="text-center text-xs font-bold"
+            className="text-center text-xs font-bold pointer-events-auto"
             value={ category }
             onChange={ event => {
               handleCoins( event.target.value )
@@ -51,7 +51,7 @@ export const Header = () => {
         <div
           className="px-2 h-10 rounded-3xl bg-white flex items-center">
           <select
-            className="text-center text-xs font-bold"
+            className="text-center text-xs font-bold pointer-events-auto"
             onChange={ event => setSort( event.target.value )}>
             <option value="market_cap">Market Cap</option>
             <option value="total_volume">Tatal Volume</option>
