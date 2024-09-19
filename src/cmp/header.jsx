@@ -73,7 +73,7 @@ export const Header = () => {
           <div className="w-full max-h-[100px] bg-white flex justify-center items-center pointer-events-auto">
             {/* ここに広告を注入する */}
             <ins
-              class="adsbygoogle"
+              className="adsbygoogle"
               style={{ display: "inline-block", width: "346px", height: "100px"}}
               data-ad-client="ca-pub-7513541440780811"
               data-ad-slot="7363878258"></ins>
