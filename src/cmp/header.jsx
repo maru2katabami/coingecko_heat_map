@@ -65,13 +65,13 @@ export const Header = () => {
             <option value="total_volume">Tatal Volume</option>
           </select>
         </div>
+        <div id="frame" className="p-2 w-full flex justify-center items-center pointer-events-auto">
+          <iframe data-aa="2353483" src="//ad.a-ads.com/2353483?size=320x100" className="w-[320px] h-[100px]"></iframe>
+          <a id="preview-link" href="https://aads.com/campaigns/new/?source_id=2353483&source_type=ad_unit&partner=2353483"></a>
+        </div>
         { detail.name &&
         <div className="p-2 space-y-2 w-full">
-            {/* ここに広告を注入する */}
-          <div id="frame" className="w-full max-h-[100px] flex justify-center items-center">
-            <iframe data-aa='2353483' src='//ad.a-ads.com/2353483?size=320x100' className="w-[320px] h-[100px]"></iframe>
-            <a id="preview-link" href="https://aads.com/campaigns/new/?source_id=2353483&source_type=ad_unit&partner=2353483"></a>
-          </div>
+          {/* ここに広告を注入する */}
           <div className="space-y-2 w-full flex flex-wrap justify-between items-center">
             <div style={{ width: "40px", height: "40px", background: `url(${ detail.image }) no-repeat center center /100%`}}/>
             <div className="text-3xl font-bold text-white">{ detail.name }</div>
