@@ -42,7 +42,7 @@ export const Treemap = () => {
         .attr("transform", d => `translate(${ d.x0 }, ${ d.y0 })`)
         .on("pointerdown", ( event, d ) => {
           const timer = setTimeout(() => window.location.href = `https://www.coingecko.com/en/coins/${ d.data.id }`, 2000 )
-          const interval = setInterval(() => setProgress( prev => Math.min( prev + 1, 100 )), 25 )
+          const interval = setInterval(() => setProgress( prev => Math.min( prev + 1, 100 )), 15 )
           const clearProgress = () => {
             clearTimeout( timer )
             clearInterval( interval )
@@ -142,9 +142,7 @@ export const Treemap = () => {
   return (
     <div className="absolute top-0 size-full">
       <svg className="size-full" ref={ svgRef }/>
-      <div
-        className="absolute top-0 h-1 bg-black/70"
-        style={{ width: `${ progress }%`, transition: "width 0.3s ease"}}/>
+      <div style={{ position: "absolute", top: "0px", width: `${ progress }%`, height: "5px", background: "#3b82f6", transition: "width 0.3s ease"}}/>
     </div>
   )
 }

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-* { @apply outline-none bg-transparent select-none flex-shrink-0 overflow-hidden }
+* { @apply outline-none bg-transparent flex-shrink-0 overflow-hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
 
 html, body, main { @apply relative size-full }
