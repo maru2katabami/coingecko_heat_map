@@ -41,8 +41,8 @@ export const Header = () => {
   }, [])
 
   return (
-    <div className="absolute top-0 pt-7 w-full flex justify-center items-center pointer-events-none">
-      <div className="p-1 w-[370px] rounded-3xl bg-black/80 flex flex-wrap justify-between items-center">
+    <div className="absolute top-0 pt-7 w-full flex justify-center items-center pointer-events-none overflow-visible">
+      <div className="p-1 w-[370px] rounded-3xl bg-black/80 flex flex-wrap justify-between items-center overflow-visible">
         <div className="px-2 h-10 rounded-3xl bg-white flex items-center pointer-events-auto">
           <select
             className="h-full text-center text-xs hover:text-blue-500 font-bold"
@@ -65,12 +65,12 @@ export const Header = () => {
             <option value="total_volume">Tatal Volume</option>
           </select>
         </div>
-        <div id="frame" className="p-2 w-full flex justify-center items-center pointer-events-auto">
+        <div id="frame" className={`p-2 w-full flex justify-center items-center ${ !detail.name && "hidden"} pointer-events-auto`}>
           <iframe data-aa="2353483" src="//ad.a-ads.com/2353483?size=320x100" className="w-[320px] h-[100px]"></iframe>
           <a id="preview-link" href="https://aads.com/campaigns/new/?source_id=2353483&source_type=ad_unit&partner=2353483"></a>
         </div>
         { detail.name &&
-        <div className="p-2 space-y-2 w-full">
+        <div className="p-2 space-y-2 w-full overflow-visible">
           {/* ここに広告を注入する */}
           <div className="space-y-2 w-full flex flex-wrap justify-between items-center">
             <div style={{ width: "40px", height: "40px", background: `url(${ detail.image }) no-repeat center center /100%`}}/>
