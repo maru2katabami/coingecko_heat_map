@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from "react"
+import React from "react"
 import { Treemap } from "@/cmp/treemap"
 import { Header } from "@/cmp/header"
 

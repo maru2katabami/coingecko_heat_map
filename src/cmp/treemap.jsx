@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect, useRef, useState } from "react"
 import * as d3 from "d3"
 import { Zustand } from "@/lib/zustand"
+import { Adsense } from "./adsense"
 
 export const Treemap = () => {
 
@@ -153,12 +154,7 @@ export const Treemap = () => {
         <svg className="w-full h-[calc(100%-100px)]" ref={ svgRef }/>
       </Suspense>
       <div style={{ position: "absolute", top: "0px", width: `${ progress }%`, height: "5px", background: "#3b82f6", transition: "width 0.3s ease"}}/>
-      <div className="w-full h-[100px] flex justify-around items-center bg-black">
-        <div id="frame" className="size-full">
-          <iframe data-aa="2353670" src="//acceptable.a-ads.com/2353670" className="p-0 size-full border-none overflow-hidden bg-transparent"></iframe>
-          <a id="preview-link" href="https://aads.com/campaigns/new/?source_id=2353670&source_type=ad_unit&partner=2353670"></a>
-        </div>
-      </div>
+      <Adsense/>
     </div>
   )
 }
