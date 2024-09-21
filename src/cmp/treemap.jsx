@@ -40,19 +40,26 @@ export const Treemap = () => {
         .data( root.leaves())
         .enter().append("g")
         .attr("transform", d => `translate(${ d.x0 }, ${ d.y0 })`)
-        .on("pointerdown", ( event, d ) => {
-          const timer = setTimeout(() => window.location.href = `https://www.coingecko.com/en/coins/${ d.data.id }`, 2000 )
-          const interval = setInterval(() => setProgress(prev => Math.min( prev + 1, 100 )), 20 )
+        .on("pointerdown touchstart", ( event, d ) => {
+          const timer = setTimeout(() => {
+            clearProgress()
+            window.location.href = `https://www.coingecko.com/en/coins/${ d.data.id }`
+          }, 3000 )
+          const interval = setInterval(() => setProgress( prev => Math.min( prev + 1, 100 )), 30 )
           const clearProgress = () => {
             clearTimeout( timer )
             clearInterval( interval )
             setProgress( 0 )
             event.target.removeEventListener("pointerup", clearProgress )
             event.target.removeEventListener("pointerout", clearProgress )
+            event.target.removeEventListener("touchend", clearProgress )
+            event.target.removeEventListener("touchcancel", clearProgress )
             window.removeEventListener("beforeunload", clearProgress )
           }
           event.target.addEventListener("pointerup", clearProgress, { passive: true })
           event.target.addEventListener("pointerout", clearProgress, { passive: true })
+          event.target.addEventListener("touchend", clearProgress, { passive: true })
+          event.target.addEventListener("touchcancel", clearProgress, { passive: true })
           window.addEventListener("beforeunload", clearProgress )
           setDetail( d.data )
         })
@@ -149,11 +156,15 @@ export const Treemap = () => {
   }, [ sort, coins ])
 
   return (
-    <div className="absolute top-0 size-full bg-[url(/img/gecko.webp)] bg-no-repeat bg-center bg-[size:cover] flex justify-center items-center">
+    <div
+      className="absolute top-0 p-[50px] pb-[100px] size-full bg-[url(/img/gecko.webp)] bg-no-repeat bg-center bg-[size:cover] flex justify-center items-center"
+      id="background"
+      onClick={ event => { if ( event.target.id === "background") setDetail({})}}
+      onPointerMove={ event => { if ( event.target.id === "background") setDetail({})}}>
       <Suspense fallback={ null }>
-        <svg className="w-[calc(100%-100px)] h-[calc(100%-100px)] overflow-visible" ref={ svgRef }/>
+        <svg className="size-full overflow-visible" ref={ svgRef }/>
       </Suspense>
-      <div style={{ position: "absolute", top: "0px", width: `${ progress }%`, height: "5px", background: "#3b82f6", transition: "width 0.3s ease"}}/>
+      <div style={{ position: "absolute", top: "0px", left: "0px", width: `${ progress }%`, height: "5px", background: "#3b82f6", transition: "width 0.3s ease"}}/>
       <Adsense/>
     </div>
   )
