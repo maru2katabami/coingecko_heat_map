@@ -17,7 +17,7 @@ export const Adsense = () => {
   }, [])
 
   return (
-    <div className="w-full h-[100px] flex justify-around items-center">
+    <div className="w-full h-[100px] flex justify-around items-center bg-white">
       <ins
         className="adsbygoogle"
         style={{ display: "block", width: "340px", height: "100px" }}
