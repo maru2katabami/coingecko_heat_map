@@ -41,14 +41,16 @@ export const Treemap = () => {
         .attr("transform", d => `translate(${ d.x0 }, ${ d.y0 })`)
         .on("pointerdown", ( event, d ) => {
           const timer = setTimeout(() => window.location.href = `https://www.coingecko.com/en/coins/${ d.data.id }`, 2000 )
-          const interval = setInterval(() => setProgress( prev => Math.min( prev + 1, 100 )), 20 )
+          const interval = setInterval(() => setProgress(prev => Math.min( prev + 1, 100 )), 20 )
           const clearProgress = () => {
             clearTimeout( timer )
             clearInterval( interval )
             setProgress( 0 )
+            event.target.removeEventListener("pointerup", clearProgress )
+            event.target.removeEventListener("pointerout", clearProgress )
           }
-          event.target.addEventListener("pointerup", clearProgress )
-          event.target.addEventListener("pointerout", clearProgress )
+          event.target.addEventListener("pointerup", clearProgress, { passive: true })
+          event.target.addEventListener("pointerout", clearProgress, { passive: true })
           setDetail( d.data )
         })
         .on("pointermove", ( event, d ) => {
