@@ -5,16 +5,19 @@ export const Adsense = () => {
   const [ width, setWidth ] = useState( 0 )
 
   useEffect(() => {
-    setWidth( window.innerWidth )
+    const updateWidth = () => setWidth( window.innerWidth )
+    updateWidth()
     try {
       ( window.adsbygoogle = window.adsbygoogle || []).push({})
     } catch ( err ) {
       console.log( err )
     }
+    window.addEventListener("resize", updateWidth )
+    return () => window.removeEventListener("resize", updateWidth )
   }, [])
 
   return (
-    <div className="w-full h-[100px] flex justify-around items-center bg-white">
+    <div className="w-full h-[100px] flex justify-around items-center">
       <ins
         className="adsbygoogle"
         style={{ display: "block", width: "340px", height: "100px" }}
