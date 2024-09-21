@@ -16,7 +16,11 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/manifest/icon512_maskable.png"></link>
         <meta name="theme-color" content="#fff"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7513541440780811" crossOrigin="anonymous"></script>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          crossOrigin="anonymous"
+          data-ad-client={ process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID }/>
       </head>
       <body className={ ss3.className }>
         { children }

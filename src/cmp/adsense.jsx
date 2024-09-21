@@ -18,17 +18,17 @@ export const Adsense = () => {
       <ins
         className="adsbygoogle"
         style={{ display: "block", width: "340px", height: "100px" }}
-        data-ad-client="ca-pub-7513541440780811"
+        data-ad-client={ process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID }
         data-ad-slot="7363878258"></ins>
       <ins 
         className="adsbygoogle"
         style={{ display: width >= 640 ? "block": "none", width: "340px", height: "100px" }}
-        data-ad-client="ca-pub-7513541440780811"
+        data-ad-client={ process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID }
         data-ad-slot="5738261110"></ins>
       <ins 
         className="adsbygoogle"
         style={{ display: width >= 1020 ? "block": "none", width: "340px", height: "100px" }}
-        data-ad-client="ca-pub-7513541440780811"
+        data-ad-client={ process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID }
         data-ad-slot="9518285104"></ins>
     </div>
   )
