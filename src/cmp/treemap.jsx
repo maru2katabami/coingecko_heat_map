@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { Suspense, useEffect, useRef, useState } from "react"
 import * as d3 from "d3"
 import { Zustand } from "@/lib/zustand"
 
@@ -40,8 +40,8 @@ export const Treemap = () => {
         .enter().append("g")
         .attr("transform", d => `translate(${ d.x0 }, ${ d.y0 })`)
         .on("pointerdown", ( event, d ) => {
-          const timer = setTimeout(() => window.location.href = `https://www.coingecko.com/en/coins/${ d.data.id }`, 3000 )
-          const interval = setInterval(() => setProgress( prev => Math.min( prev + 1, 100 )), 25 )
+          const timer = setTimeout(() => window.location.href = `https://www.coingecko.com/en/coins/${ d.data.id }`, 2000 )
+          const interval = setInterval(() => setProgress( prev => Math.min( prev + 1, 100 )), 20 )
           const clearProgress = () => {
             clearTimeout( timer )
             clearInterval( interval )
@@ -120,7 +120,7 @@ export const Treemap = () => {
         .text( d => `Volume[ ${ formatNumber( d.data.total_volume )} ]`)
 
       const zoom = d3.zoom()
-        .scaleExtent([ 1, 1000 ])
+        .scaleExtent([ 1, 100000 ])
         .on("zoom", ( event ) => {
           g.transition().duration( 500 ).ease( d3.easeCubicInOut ).attr("transform", event.transform )
           g.selectAll("rect").attr("stroke-width", 1 / event.transform.k )
@@ -144,8 +144,10 @@ export const Treemap = () => {
   }, [ sort, coins ])
 
   return (
-    <div className="absolute top-0 size-full">
-      <svg className="w-full h-[calc(100%-100px)]" ref={ svgRef }/>
+    <div className="absolute top-0 size-full bg-[url(/img/gecko.webp)] bg-no-repeat bg-center bg-[size:cover]">
+      <Suspense fallback={ null }>
+        <svg className="w-full h-[calc(100%-100px)]" ref={ svgRef }/>
+      </Suspense>
       <div style={{ position: "absolute", top: "0px", width: `${ progress }%`, height: "5px", background: "#3b82f6", transition: "width 0.3s ease"}}/>
       <div className="w-full h-[100px] flex justify-around items-center bg-black">
         <div id="frame" className="size-full">
