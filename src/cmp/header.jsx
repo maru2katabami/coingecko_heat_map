@@ -25,10 +25,9 @@ export const Header = () => {
       const mcap = data.reduce(( sum, coin ) => sum + coin.market_cap, 0 )
       setCoins({ data, mcap })
     } catch ( err ) {
-      toast.error("Traffic is high. Please retry after this message disappears.", {
+      toast.error("Traffic is high. Please try again in 1 minute.", {
         position: "top-right",
-        autoClose: 60000,
-        closeButton: false,
+        autoClose: 5000,
         theme: "light",
       })
     }
@@ -85,7 +84,7 @@ export const Header = () => {
         </div>
         }
       </div>
-      <ToastContainer/>
+      <ToastContainer className="pointer-events-auto"/>
     </div>
   )
 }

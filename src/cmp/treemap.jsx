@@ -48,11 +48,11 @@ export const Treemap = () => {
             setProgress( 0 )
             event.target.removeEventListener("pointerup", clearProgress )
             event.target.removeEventListener("pointerout", clearProgress )
-            window.removeEventListener("beforeunload", clearProgress )
+            // window.removeEventListener("beforeunload", clearProgress )
           }
           event.target.addEventListener("pointerup", clearProgress, { passive: true })
           event.target.addEventListener("pointerout", clearProgress, { passive: true })
-          window.addEventListener("beforeunload", clearProgress )
+          // window.addEventListener("beforeunload", clearProgress )
           setDetail( d.data )
         })
         .on("pointermove", ( event, d ) => {
