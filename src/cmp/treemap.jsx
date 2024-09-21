@@ -19,8 +19,8 @@ export const Treemap = () => {
 
   useEffect(() => {
     const drawChart = () => {
-      const width = window.innerWidth
-      const height = window.innerHeight - 100
+      const width = window.innerWidth - 100
+      const height = window.innerHeight - 150
 
       const root = d3.hierarchy({ children: coins?.data }).sum( d => d[ sort ]).sort(( a, b ) => b.value - a.value )
 
@@ -149,9 +149,9 @@ export const Treemap = () => {
   }, [ sort, coins ])
 
   return (
-    <div className="absolute top-0 size-full bg-[url(/img/gecko.webp)] bg-no-repeat bg-center bg-[size:cover]">
+    <div className="absolute top-0 size-full bg-[url(/img/gecko.webp)] bg-no-repeat bg-center bg-[size:cover] flex justify-center items-center">
       <Suspense fallback={ null }>
-        <svg className="w-full h-[calc(100%-100px)]" ref={ svgRef }/>
+        <svg className="w-[calc(100%-100px)] h-[calc(100%-100px)] overflow-visible" ref={ svgRef }/>
       </Suspense>
       <div style={{ position: "absolute", top: "0px", width: `${ progress }%`, height: "5px", background: "#3b82f6", transition: "width 0.3s ease"}}/>
       <Adsense/>

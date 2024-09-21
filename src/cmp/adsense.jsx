@@ -17,19 +17,19 @@ export const Adsense = () => {
   }, [])
 
   return (
-    <div className="w-full h-[100px] flex justify-around items-center bg-white">
+    <div className="absolute bottom-0 w-full h-[100px] flex justify-around items-center pointer-events-none">
       <ins
-        className="adsbygoogle"
+        className="adsbygoogle pointer-events-auto"
         style={{ display: "block", width: "340px", height: "100px" }}
         data-ad-client={ process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID }
         data-ad-slot="7363878258"></ins>
       <ins 
-        className="adsbygoogle"
+        className="adsbygoogle pointer-events-auto"
         style={{ display: width >= 640 ? "block": "none", width: "340px", height: "100px" }}
         data-ad-client={ process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID }
         data-ad-slot="5738261110"></ins>
       <ins 
-        className="adsbygoogle"
+        className="adsbygoogle pointer-events-auto"
         style={{ display: width >= 1020 ? "block": "none", width: "340px", height: "100px" }}
         data-ad-client={ process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID }
         data-ad-slot="9518285104"></ins>
