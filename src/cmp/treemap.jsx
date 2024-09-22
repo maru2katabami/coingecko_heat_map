@@ -162,7 +162,7 @@ export const Treemap = () => {
       onClick={ event => { if ( event.target.id === "background") setDetail({})}}
       onPointerMove={ event => { if ( event.target.id === "background") setDetail({})}}>
       <Suspense fallback={ null }>
-        <svg className="size-full overflow-visible" ref={ svgRef }/>
+        <svg className="size-full overflow-visible" ref={ svgRef } onContextMenu={ event => event.preventDefault()}/>
       </Suspense>
       <div style={{ position: "absolute", top: "0px", left: "0px", width: `${ progress }%`, height: "5px", background: "#3b82f6", transition: "width 0.3s ease"}}/>
       <Adsense/>
