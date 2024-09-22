@@ -19,8 +19,8 @@ export const Treemap = () => {
 
   useEffect(() => {
     const drawChart = () => {
-      const width = window.innerWidth - 100
-      const height = window.innerHeight - 150
+      const width = window.innerWidth
+      const height = window.innerHeight - 100
 
       const root = d3.hierarchy({ children: coins?.data }).sum( d => d[ sort ]).sort(( a, b ) => b.value - a.value )
 
@@ -138,13 +138,14 @@ export const Treemap = () => {
           g.selectAll("rect").attr("stroke-width", 1 / event.transform.k )
           if ( event.transform.k === 1 && event.transform.x !== 0 ) {
             g.transition()
-              .duration( 500 )
+              // .duration( 200 )
               .ease( d3.easeCubicInOut )
               .attr("transform", `translate(0,0) scale(1)`)
           }
         })
 
       svg.call( zoom )
+      svg.call( zoom.transform, d3.zoomIdentity )
     }
 
     if ( coins.data && coins.mcap ) {
@@ -157,12 +158,12 @@ export const Treemap = () => {
 
   return (
     <div
-      className="absolute top-0 p-[50px] pb-[100px] size-full bg-[url(/img/gecko.webp)] bg-no-repeat bg-center bg-[size:cover] flex justify-center items-center"
+      className="absolute top-0 size-full bg-[url(/img/gecko.webp)] bg-no-repeat bg-center bg-[size:cover]"
       id="background"
       onClick={ event => { if ( event.target.id === "background") setDetail({})}}
       onPointerMove={ event => { if ( event.target.id === "background") setDetail({})}}>
       <Suspense fallback={ null }>
-        <svg className="size-full overflow-visible" ref={ svgRef } onContextMenu={ event => event.preventDefault()}/>
+        <svg className="w-full h-[calc(100%-100px)] overflow-visible" ref={ svgRef } onContextMenu={ event => event.preventDefault()}/>
       </Suspense>
       <div style={{ position: "absolute", top: "0px", left: "0px", width: `${ progress }%`, height: "5px", background: "#3b82f6", transition: "width 0.3s ease"}}/>
       <Adsense/>
