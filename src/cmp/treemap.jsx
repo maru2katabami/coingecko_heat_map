@@ -164,10 +164,9 @@ export const Treemap = () => {
           onPointerMove={ event => { if( event.target.localName === "svg") setDetail({})}}/>
       </Suspense>
       <div style={{ position: "absolute", top: "0px", left: "0px", width: `${ progress }%`, height: "5px", background: "#3b82f6", transition: "width 0.3s ease"}}/>
-      <div className="absolute bottom-0 w-full h-[100px] flex justify-center items-center" id="frame">
-        <iframe data-aa="2355770" src="//acceptable.a-ads.com/2355770" className="p-0 size-full border-0 bg-transparent overflow-hidden"></iframe>
-        <a className="absolute top-0 size-full" id="preview-link" href="https://aads.com/campaigns/new/?source_id=2355770&source_type=ad_unit&partner=2355770"></a>
-      </div>
+      <div id="frame" style={{ position: "absolute", bottom: "0px", left: "50%", transform: "translateX(-50%)", width: "320px", height: "100px"}}>
+        <iframe data-aa='2355776' src='//ad.a-ads.com/2355776?size=320x100' style={{ width: "320px", height: "100px", border: "0px", padding: "0", overflow: "hidden", backgroundColor: "transparent"}}></iframe>
+        <a style={{ display: "block", textAlign: "right", fontSize: "12px"}} id="frame-link" href="https://aads.com/campaigns/new/?source_id=2355776&source_type=ad_unit&partner=2355776">Advertise here</a></div>
     </div>
   )
 }
