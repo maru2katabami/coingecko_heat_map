@@ -1,7 +1,6 @@
 import React, { Suspense, useEffect, useRef, useState } from "react"
 import * as d3 from "d3"
 import { Zustand } from "@/lib/zustand"
-import { Adsense } from "./adsense"
 
 export const Treemap = () => {
 
@@ -165,7 +164,10 @@ export const Treemap = () => {
           onPointerMove={ event => { if( event.target.localName === "svg") setDetail({})}}/>
       </Suspense>
       <div style={{ position: "absolute", top: "0px", left: "0px", width: `${ progress }%`, height: "5px", background: "#3b82f6", transition: "width 0.3s ease"}}/>
-      <Adsense/>
+      <div className="absolute bottom-0 w-full h-[100px] flex justify-center items-center" id="frame">
+        <iframe data-aa="2355770" src="//acceptable.a-ads.com/2355770" className="p-0 size-full border-0 bg-transparent overflow-hidden"></iframe>
+        <a className="absolute top-0 size-full" id="preview-link" href="https://aads.com/campaigns/new/?source_id=2355770&source_type=ad_unit&partner=2355770"></a>
+      </div>
     </div>
   )
 }
