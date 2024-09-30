@@ -13,11 +13,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          crossOrigin="anonymous"
-          data-ad-client={ process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID }/>
       </head>
       <body className={ ss3.className }>
         { children }

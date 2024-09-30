@@ -7,32 +7,24 @@ export const Adsense = () => {
   useEffect(() => {
     const updateWidth = () => setWidth( window.innerWidth )
     updateWidth()
-    try {
-      ( window.adsbygoogle = window.adsbygoogle || []).push({})
-    } catch ( err ) {
-      console.log( err )
-    }
     window.addEventListener("resize", updateWidth )
     return () => window.removeEventListener("resize", updateWidth )
   }, [])
 
   return (
     <div className="absolute bottom-0 w-full h-[100px] flex justify-around items-center pointer-events-none">
-      <ins
-        className="adsbygoogle pointer-events-auto"
-        style={{ display: "block", width: "340px", height: "100px" }}
-        data-ad-client={ process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID }
-        data-ad-slot="7363878258"></ins>
-      <ins 
-        className="adsbygoogle pointer-events-auto"
-        style={{ display: width >= 640 ? "block": "none", width: "340px", height: "100px" }}
-        data-ad-client={ process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID }
-        data-ad-slot="5738261110"></ins>
-      <ins 
-        className="adsbygoogle pointer-events-auto"
-        style={{ display: width >= 1020 ? "block": "none", width: "340px", height: "100px" }}
-        data-ad-client={ process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID }
-        data-ad-slot="9518285104"></ins>
+      <div id="frame" className="relative w-[320px] h-[100px] pointer-events-auto">
+        <iframe data-aa="2355758" src="//ad.a-ads.com/2355758?size=320x100" className="p-0 size-full border-none bg-transparent overflow-hidden"></iframe>
+        <a className="absolute top-0 size-full" id="preview-link" href="https://aads.com/campaigns/new/?source_id=2355758&source_type=ad_unit&partner=2355758"></a>
+      </div>
+      <div id="frame" className={`relative w-[320px] h-[100px] ${ width <= 640 ? "hidden": "block"} pointer-events-auto`}>
+        <iframe data-aa="2355760" src="//ad.a-ads.com/2355760?size=320x100" className="p-0 size-full border-none bg-transparent overflow-hidden"></iframe>
+        <a className="absolute top-0 size-full" id="preview-link" href="https://aads.com/campaigns/new/?source_id=2355760&source_type=ad_unit&partner=2355760"></a>
+      </div>
+      <div id="frame" className={`relative w-[320px] h-[100px] ${ width <= 960 ? "hidden": "block"} pointer-events-auto`}>
+        <iframe data-aa="2355762" src="//ad.a-ads.com/2355762?size=320x100" className="p-0 size-full border-none bg-transparent overflow-hidden"></iframe>
+        <a className="absolute top-0 size-full" id="preview-link" href="https://aads.com/campaigns/new/?source_id=2355762&source_type=ad_unit&partner=2355762"></a>
+      </div>
     </div>
   )
 }
